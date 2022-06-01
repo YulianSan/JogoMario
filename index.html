@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="game">
+        <canvas id="canvas" width="1000" height="600">
+            Desculpe-me, seu navegador não suporta o elemento &lt;canvas&gt;.
+        </canvas>
+    </div>
+</body>
+
+<script type="module">
+    import marioP from "./mario/draw.mario.js";
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    function loop() {
+        ctx.fillStyle = "white";
+        ctx.fillRect(0,0,canvas.width,canvas.height)
+        marioP.drawMario(ctx);
+        requestAnimationFrame(loop);
+    }
+    loop();
+</script>
+</html>
