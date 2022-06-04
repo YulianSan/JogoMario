@@ -23,6 +23,7 @@
     function loop() {
         ctx.fillStyle = "white";
         ctx.fillRect(0,0,canvas.width,canvas.height)
+        ctx.fillRect(-canvas.width,0,canvas.width,canvas.height)
         marioP.drawMario(ctx);
         requestAnimationFrame(loop);
     }
