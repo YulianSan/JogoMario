@@ -1,12 +1,12 @@
-import move from '../acoes/mover.js';
+import move from '../acoes/MudarDirecao.js';
 
 export default function teclas(status){
 
     window.addEventListener("keydown",(event)=>{
-        move(status,event.key);
+        move(status,event.key,"m");
     });
 
-    window.addEventListener("keyup",()=>{
-        move(status,"Parar");
+    window.addEventListener("keyup",(event)=>{
+        move(status,event.key,"p");
     });
 }

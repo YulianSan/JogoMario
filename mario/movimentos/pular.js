@@ -17,20 +17,26 @@ const framesPulando = [
 //função que desenha
 export default function MarioPulando(ctx,frames,mario) {
 
+    let scaleX;
+    if((mario.direita && mario.esquerda) || mario.direita) scaleX = -1;
+    else scaleX = 1;
+
     let indiceP = 
     Math.floor(( frames * framesPulando.length )/velAnimacaoPulando ) > framesPulando.length 
         ? framesPulando.length-1 
         : Math.floor( 
             (frames% ( velAnimacaoPulando*framesPulando.length )) /velAnimacaoPulando 
           );
-
+        
+    ctx.setTransform(scaleX,0,0,1,0,0);
+    
     ctx.drawImage(
         mario.img,
         framesPulando[indiceP].x,
         framesPulando[indiceP].y,
         framesPulando[indiceP].w,
         framesPulando[indiceP].h,
-        300,
+        scaleX < 0 ? - mario.x - framesPulando[indiceP].w : mario.x,
         mario.y,
         framesPulando[indiceP].w,
         framesPulando[indiceP].h

@@ -11,9 +11,13 @@ const framesAndando = [
 ];
 
 export default function MarioAndando(ctx,frames,mario) {
+    let scaleX;
+    if((mario.direita && mario.esquerda) || mario.direita) scaleX = -1;
+    else scaleX = 1;
+    
     let indiceA = Math.floor( (frames%( velAnimacaoAndando*framesAndando.length )) /velAnimacaoAndando );
     
-    ctx.setTransform(mario.direcao,0,0,1,0,0);
+    ctx.setTransform(scaleX,0,0,1,0,0);
 
     ctx.drawImage(
         mario.img,
@@ -21,7 +25,7 @@ export default function MarioAndando(ctx,frames,mario) {
         framesAndando[indiceA].y,
         framesAndando[indiceA].w,
         framesAndando[indiceA].h,
-        mario.direcao * mario.x < 0 ? -mario.x - framesAndando[indiceA].w : mario.x,
+        scaleX < 0 ? - mario.x - framesAndando[indiceA].w : mario.x,
         mario.y,
         framesAndando[indiceA].w,
         framesAndando[indiceA].h
