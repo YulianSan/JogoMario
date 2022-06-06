@@ -16,15 +16,21 @@
 </body>
 
 <script type="module">
-    import marioP from "./mario/draw.mario.js";
+    import mario from "./mario/draw.mario.js";
+    import chao from "./chao/draw.chao.js"
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
     function loop() {
         ctx.fillStyle = "white";
+        
         ctx.fillRect(0,0,canvas.width,canvas.height)
         ctx.fillRect(-canvas.width,0,canvas.width,canvas.height)
-        marioP.drawMario(ctx);
+        
+        let statusMario = mario.drawMario(ctx);
+
+        chao.drawChaos(ctx,statusMario);
+
         requestAnimationFrame(loop);
     }
     loop();

@@ -4,7 +4,7 @@ var movimentos ={
     ArrowRight : ()=>{ mario.direita  = true; },
     ArrowUp    : ()=>{ 
         if(!mario.suspenso){
-            mario.gravidade = -4;
+            mario.gravidade = -5;
             mario.suspenso  = true
         };
         

@@ -6,8 +6,7 @@ export default function mover(status){
         status.x-=1.5;
     }
     if(status.suspenso){
-        status.gravidade += .079;
-        status.y += status.gravidade;
-        
+        status.gravidade += .095;
+        status.y += status.gravidade;  
     }
 }
