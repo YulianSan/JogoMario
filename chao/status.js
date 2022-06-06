@@ -1,4 +1,3 @@
-
 const chao = new Image();
 chao.src = `./chao/chao.png`;
 

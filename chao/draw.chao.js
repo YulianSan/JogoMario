@@ -27,8 +27,6 @@ function drawChaos(ctx,mario) {
 
     colidir(statusChao.chaos,mario);
 
-
-
 }
 
 export default { drawChaos };

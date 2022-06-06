@@ -1,8 +1,6 @@
 
 const velAnimacaoAndando = 10;
 
-
-
 export default function MarioAndando(ctx,frames,mario, scaleX) {
     
     let indiceA = Math.floor( (frames%( velAnimacaoAndando* mario.framesAndando.length )) /velAnimacaoAndando );

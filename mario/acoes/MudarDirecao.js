@@ -9,7 +9,6 @@ var movimentos ={
         };
         
     }
-
 }
 
 var PararMovimentos ={

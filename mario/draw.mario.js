@@ -8,6 +8,7 @@ var frames=0;
 Tecla(status);
 
 function drawMario(ctx) {
+    
     frames++;
 
     let scaleX;

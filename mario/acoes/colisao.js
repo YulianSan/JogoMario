@@ -1,3 +1,4 @@
+
 export default function colisao(itens,mario){
     if(itens.length){
         for(let v of itens){

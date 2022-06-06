@@ -3,7 +3,6 @@ const velAnimacaoPulando = 15;
 
 //cada posição do sprite do mario pulando
 
-
 //função que desenha
 export default function MarioPulando(ctx,frames,mario,scaleX) {
 

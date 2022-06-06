@@ -2,6 +2,7 @@
 const mario = new Image();
 mario.src="./mario/mario.png";
 
+
 export default {
     img:mario       ,
     x:100, y:450    ,
