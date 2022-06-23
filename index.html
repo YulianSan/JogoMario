@@ -18,7 +18,8 @@
 <script type="module">
     
     import mario from "./mario/draw.mario.js";
-    import chao from "./chao/draw.chao.js"
+    import chao from "./chao/draw.chao.js";
+
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
@@ -34,6 +35,8 @@
 
         requestAnimationFrame(loop);
     }
+
     loop();
+    
 </script>
 </html>
