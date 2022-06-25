@@ -28,8 +28,9 @@ function drawChaos(ctx,mario) {
         );
 
     });
-
-    colidir(statusChao.chaos,mario);
+    
+    if(mario.vivo)
+        colidir(statusChao.chaos,mario);
 
 }
 

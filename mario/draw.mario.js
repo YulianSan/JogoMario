@@ -3,6 +3,7 @@ import status from './status.js';
 import MarioAndando from './movimentos/andar.js';
 import MarioPulando from './movimentos/pular.js';
 import MarioFaleceu from './movimentos/falecer.js';
+import MarioParado from "./movimentos/parado.js";
 
 import Tecla from './entradas/teclado.js';
 import mover from "./acoes/mover.js";
@@ -18,16 +19,21 @@ function drawMario(ctx) {
     //  1 = esquerda
     // -1 = direita
     let scaleX;
-        if((status.direita && status.esquerda) || status.direita) scaleX = -1;
-        else scaleX = 1;
+        status.ultimaDirecao === "direita" ? scaleX = -1:
+        scaleX = 1;
 
-    if(!status.vivo)
-        MarioFaleceu(ctx,status);
-    else if(status.suspenso)
-        MarioPulando(ctx,frames,status,scaleX);
+    if ( !status.vivo )
+        MarioFaleceu( ctx, status );
+
+    else if ( status.suspenso )
+        MarioPulando( ctx, frames, status, scaleX );
+
+    else if ( status.direita || status.esquerda )
+        MarioAndando( ctx, frames, status, scaleX );
+
     else
-        MarioAndando(ctx,frames,status,scaleX);
-    
+        MarioParado( ctx, status, scaleX );
+
     mover(status);
     
     return status;
