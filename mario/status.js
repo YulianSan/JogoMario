@@ -6,8 +6,11 @@ mario.src="./mario/mario.png";
 export default {
     img:mario               ,
     x:100, y:450            ,
+    w:0  , h:0              ,
+    
     //constrole
-    ultimaDirecao:"direita" ,
+    ultimaDirecao : "direita",
+
     //estado
     bufado: 0               ,
     vivo  : true            ,

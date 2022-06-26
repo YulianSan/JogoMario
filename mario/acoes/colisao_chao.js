@@ -15,10 +15,12 @@ export default function colisao(chaos,mario){
             }
             else if( (v.y < mario.y+35 && v.y+25 > mario.y) && 
                      (v.x+30 > mario.x && v.x < mario.x + 30) ){
-                
+                    
+                    //colisão direita do bloco
                     if(v.x + 30 > mario.x && v.x + 24 < mario.x)
                         mario.x = v.x + 30;
 
+                    //colisão esquerda do bloco
                     else 
                         mario.x = v.x - 30;
             

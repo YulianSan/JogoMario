@@ -4,7 +4,7 @@ const velAnimacaoPulando = 15;
 //cada posição do sprite do mario pulando
 
 //função que desenha
-export default function MarioPulando(ctx,frames,mario,scaleX) {
+export default function MarioPulando(ctx,frames,mario,scaleX,funDraw) {
 
     let indiceP = 
     Math.floor(( frames * mario.framesPulando.length )/velAnimacaoPulando ) > mario.framesPulando.length 
@@ -16,15 +16,5 @@ export default function MarioPulando(ctx,frames,mario,scaleX) {
     ctx.setTransform(scaleX,0,0,1,0,0);
     
 
-    ctx.drawImage(
-        mario.img,
-        mario.framesPulando[indiceP].x,
-        mario.framesPulando[indiceP].y,
-        mario.framesPulando[indiceP].w,
-        mario.framesPulando[indiceP].h,
-        scaleX < 0 ? - mario.x - mario.framesPulando[indiceP].w : mario.x,
-        mario.y,
-        mario.framesPulando[indiceP].w,
-        mario.framesPulando[indiceP].h
-        );  
+    funDraw(mario, 'framesPulando', indiceP, scaleX, ctx);
 }
