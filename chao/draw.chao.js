@@ -3,35 +3,60 @@ import colidir from "../mario/acoes/colisao_chao.js";
 
 function criarChaos(){
     for (let i = 0; i < 30; i++) {
-        statusChao.chaos.push({x:30*i,y:484})
+        statusChao.terraArray.push({x:30*i,y:484})
+    
     }
-    statusChao.chaos.push({x:400,y:360})
-    statusChao.chaos.push({x:430,y:360})
-    statusChao.chaos.push({x:460,y:360})
-    statusChao.chaos.push({x:490,y:360})
+    for(let i = 0; i < 4; i++)
+        statusChao.luckyArray.push({x:400 + 35*i,y:370})
+    
+    for(let i = 0; i < 2; i++)
+        statusChao.luckyArray.push({x:435 + 35*i,y:280})
 }
 
 criarChaos();
 
-function drawChaos(ctx,mario) {
+function drawTerra(ctx,mario) {
     
     ctx.setTransform(1,0,0,1,0,0);
 
-    statusChao.chaos.forEach( v => {
+    statusChao.terraArray.forEach( v => {
 
         ctx.drawImage(
             statusChao.img,
-            v.x, 
-            v.y,
+            statusChao.terra.x,
+            statusChao.terra.y,
+            statusChao.terra.w,
+            statusChao.terra.h,
+            v.x + mario.camera.x, 
+            v.y + mario.camera.y,
             30,
             30
         );
 
     });
     
-    if(mario.vivo)
-        colidir(statusChao.chaos,mario);
+    statusChao.luckyArray.forEach( v => {
 
+        ctx.drawImage(
+            statusChao.img,
+            statusChao.lucky.x,
+            statusChao.lucky.y,
+            statusChao.lucky.w,
+            statusChao.lucky.h,
+            v.x + mario.camera.x, 
+            v.y + mario.camera.y,
+            35,
+            35
+        );
+
+    });
+
+    if(mario.vivo)
+        colidir(
+            [
+                ...statusChao.luckyArray,
+                ...statusChao.terraArray
+            ],mario);
 }
 
-export default { drawChaos };
+export default { drawTerra };

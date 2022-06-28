@@ -10,10 +10,15 @@ export default {
     
     //constrole
     ultimaDirecao : "direita",
+    camera:{
+        x:0,
+        y:0
+    },
 
     //estado
     bufado: 0               ,
     vivo  : true            ,
+    vel   : 2               ,
 
     //direções
     direita :false          ,

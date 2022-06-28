@@ -23,6 +23,8 @@
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
+    
+
     function loop() {
         ctx.fillStyle = "#99d5e2";
         
@@ -31,7 +33,7 @@
         
         let statusMario = mario.drawMario(ctx);
 
-        chao.drawChaos(ctx,statusMario);
+        chao.drawTerra(ctx,statusMario);
 
         requestAnimationFrame(loop);
     }
