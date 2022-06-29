@@ -9,6 +9,6 @@ export default function teclas(status){
 
     window.addEventListener("keyup",(event)=>{
         if(status.vivo)
-                move(status,event.key,"p");
+            move(status,event.key,"p");
     });
 }

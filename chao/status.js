@@ -9,12 +9,14 @@ export default {
 
     terra: {
         x: 0 , y: 0 ,
-        w: 39, h: 36
+        w: 39, h: 36,
+        tamanho: 30
     },
     
     lucky: {
         x: 41,    y: 0 ,
-        w: 77 - 41, h:36
+        w: 77 - 41, h:36,
+        tamanho: 35
     }
 
 }
