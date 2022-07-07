@@ -28,9 +28,11 @@
     function loop() {
         ctx.fillStyle = "#99d5e2";
         
-        ctx.fillRect(0,0,canvas.width,canvas.height)
-        ctx.fillRect(-canvas.width,0,canvas.width,canvas.height)
+        ctx.fillRect(0,0,canvas.width,canvas.height);
         
+        ctx.fillStyle= "#c99857";
+        ctx.fillRect( 0, 530, 900, 70);
+
         let statusMario = mario.drawMario(ctx);
 
         chao.drawTerra(ctx,statusMario);

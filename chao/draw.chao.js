@@ -1,70 +1,82 @@
 import statusChao from "./status.js";
 import colidir from "../mario/acoes/colisao_bloco.js";
 
+
+var ctx;
+
 function criarChaos(){
-    for (let i = 0; i < 30; i++) {
-        let e = statusChao.terra.tamanho;
-        console.log(e)
-        statusChao.terraArray.push({x: e*i ,y:484, tamanho: 30})
+
+    produzirBlocos( statusChao.terraClass, 30, 0, 500 );
+
+    produzirBlocos( statusChao.luckyClass, 5, 300, 380 );
+    produzirBlocos( statusChao.luckyClass, 3, 330, 290 );
+
+    statusChao.luckyClass.array[2].sorteado = true;
+
+}
+
+function produzirBlocos( classe, qnt, x, y, rest = []) {
+
+    for(let i = 0; i < qnt; i++)
+        classe.array.push(
+            new classe ( classe.size * i + x, y, ...rest )
+        );
     
-    }
-    for(let i = 0; i < 4; i++)
-        statusChao.luckyArray.push({x:400 + 35*i,y:370, tamanho: 35})
-    
-    for(let i = 0; i < 2; i++)
-        statusChao.luckyArray.push({x:435 + 35*i,y:280, tamanho: 35})
 }
 
 criarChaos();
 
-function drawTerra(ctx,mario) {
-    
+function drawTerra(contexto,mario) {
+    ctx = contexto;
+
     ctx.setTransform(1,0,0,1,0,0);
 
-    statusChao.terraArray.forEach( v => {
+    statusChao.terraClass.array.forEach( v => {
 
-        ctx.drawImage(
-            statusChao.img,
-            
-            statusChao.terra.x,
-            statusChao.terra.y,
-            statusChao.terra.w,
-            statusChao.terra.h,
-            
-            v.x + mario.camera.x, 
-            v.y + mario.camera.y,
-
-            v.tamanho,
-            v.tamanho
-        );
+        drawTodos( v, statusChao.terraClass, mario );
 
     });
     
-    statusChao.luckyArray.forEach( v => {
 
-        ctx.drawImage(
-            statusChao.img,
+    statusChao.luckyClass.array.forEach( v => {
 
-            statusChao.lucky.x,
-            statusChao.lucky.y,
-            statusChao.lucky.w,
-            statusChao.lucky.h,
-            
-            v.x + mario.camera.x, 
-            v.y + mario.camera.y,
-            
-            v.tamanho,
-            v.tamanho
-        );
+        drawTodos( v, statusChao.luckyClass, mario );
+
+    });
+
+    statusChao.luckyAbatidoClass.array.forEach( v => {
+
+        drawTodos( v, statusChao.luckyAbatidoClass, mario );
 
     });
 
     if(mario.vivo)
         colidir(
             [
-                ...statusChao.luckyArray,
-                ...statusChao.terraArray
+                statusChao.luckyClass,
+                statusChao.terraClass,
+                statusChao.luckyAbatidoClass
             ],mario);
 }
 
+function drawTodos( status, instanciado, mario ) {
+    
+    ctx.drawImage(
+        
+        statusChao.img,
+        
+        instanciado.x,
+        instanciado.y,
+        instanciado.w,
+        instanciado.h,
+        
+        status.x + mario.camera.x, 
+        status.y + mario.camera.y,
+
+        instanciado.size,
+        instanciado.size
+
+    );
+    
+}
 export default { drawTerra };

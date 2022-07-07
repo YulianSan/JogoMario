@@ -1,48 +1,58 @@
 
-export default function colisao(chaos,mario){
-    if(chaos.length){
-        for(let v of chaos ){
+export default function colisao( classes, mario ){
+    
+    for(let classe of classes ){
+
+        for( let bloco of classe.array){
             
-            let x = v.x + mario.camera.x;
-            let y = v.y + mario.camera.y;
-            v.y += mario.camera.y;
+            let x = bloco.x + mario.camera.x;
+            let y = bloco.y + mario.camera.y;
             
-            if( ( y < mario.y+36 && y+ 10 > mario.y + 36 ) && 
-                ( x + v.tamanho > mario.x && x  < mario.x + 25   ) &&
-                ( mario.gravidade >= 0 ) ){
+            if( ( y < mario.y+36 && y + classe.size > mario.y) && 
+                ( x + classe.size > mario.x && x  < mario.x + classe.size   )){
+
+                    
+                if( ( y < mario.y+36 && y + 10 > mario.y + 36 ) && 
+                    ( x + classe.size > mario.x && x  < mario.x + 25   ) &&
+                    ( mario.gravidade >= 0 ) ){
+                    
+                        mario.y = y - 34;
+                        mario.suspenso = false;
+                        mario.gravidade = 0;
+
+                        return false;
+
+                }
+                else if( ( y + 5 < mario.y+36 && y + classe.size - 5 > mario.y) && 
+                        ( x + classe.size > mario.x && x < mario.x + classe.size) 
+                        ){
+                        
+                        //colisão direita do bloco
+                        if(x + classe.size > mario.x && x + classe.size - 5 < mario.x)
+                            mario.x = x + classe.size;
+
+                        //colisão esquerda do bloco
+                        else 
+                            mario.x = x - classe.size;
                 
-                    mario.y = y - 34;
-                    mario.suspenso = false;
-                    mario.gravidade = 0;
+                        return false;
 
-                    return false;
+                }
+                else if( ( y + classe.size - 5 < mario.y && y + classe.size > mario.y) && 
+                        ( x + classe.size > mario.x && x < mario.x + 30) &&
+                        ( mario.gravidade < 0 ) ){
+                        
+                        if(classe.nome === "lucky")
+                            bloco.destruir(classes[2]);
+                        
+                        mario.gravidade = 0.8;
+                        return false;
 
-            }
-            else if( ( y + 5 < mario.y+36 && y + v.tamanho - 5 > mario.y) && 
-                     ( x + v.tamanho > mario.x && x < mario.x + v.tamanho) 
-                    ){
-                    
-                    //colisão direita do bloco
-                    if(x + v.tamanho > mario.x && x + v.tamanho - 5 < mario.x)
-                        mario.x = x + v.tamanho;
-
-                    //colisão esquerda do bloco
-                    else 
-                        mario.x = x - v.tamanho;
-            
-                    return false;
-
-            }
-            else if( ( y + v.tamanho - 5 < mario.y && y + v.tamanho > mario.y) && 
-                     ( x+ v.tamanho > mario.x && x < mario.x + 30) &&
-                     ( mario.gravidade < 0 ) ){
-                    
-                    mario.gravidade = 0.8;
-                    return false;
-
+                }
             }
         }
-        mario.suspenso = true;
-        return true;
     }
+    mario.suspenso = true;
+    return true;
+
 }
