@@ -1,19 +1,8 @@
 import statusChao from "./status.js";
-import colidir from "../mario/acoes/colisao_bloco.js";
-
+import mario from "../mario/status.js";
 
 var ctx;
 
-function criarChaos(){
-
-    produzirBlocos( statusChao.terraClass, 30, 0, 500 );
-
-    produzirBlocos( statusChao.luckyClass, 5, 300, 380 );
-    produzirBlocos( statusChao.luckyClass, 3, 330, 290 );
-
-    statusChao.luckyClass.array[2].sorteado = true;
-
-}
 
 function produzirBlocos( classe, qnt, x, y, rest = []) {
 
@@ -24,9 +13,8 @@ function produzirBlocos( classe, qnt, x, y, rest = []) {
     
 }
 
-criarChaos();
 
-function drawTerra(contexto,mario) {
+function drawTerra(contexto) {
     ctx = contexto;
 
     ctx.setTransform(1,0,0,1,0,0);
@@ -50,16 +38,9 @@ function drawTerra(contexto,mario) {
 
     });
 
-    if(mario.vivo)
-        colidir(
-            [
-                statusChao.luckyClass,
-                statusChao.terraClass,
-                statusChao.luckyAbatidoClass
-            ],mario);
 }
 
-function drawTodos( status, instanciado, mario ) {
+function drawTodos( status, instanciado ) {
     
     ctx.drawImage(
         
@@ -79,4 +60,4 @@ function drawTodos( status, instanciado, mario ) {
     );
     
 }
-export default { drawTerra };
+export default { drawTerra, produzirBlocos };

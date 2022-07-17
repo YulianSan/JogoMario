@@ -1,3 +1,6 @@
+import cogumelo from '../../cogumelo/status.js';
+import luckyAbatidoClass from '../luckyAbatido/classe.js';
+
 export default class lucky{
     
     static array    = [];
@@ -18,10 +21,10 @@ export default class lucky{
 
     }
 
-    destruir( luckyAbatido ) {
+    destruir(  ) {
         
-        luckyAbatido.array.push(
-            new luckyAbatido( this.x, this.y )
+        luckyAbatidoClass.array.push(
+            new luckyAbatidoClass( this.x, this.y )
         )
 
         let indice = lucky.array.findIndex( v => {
@@ -29,7 +32,7 @@ export default class lucky{
         });
         
         if( this.sorteado ) 
-            console.log("cogumelo caindo . . .");
+            cogumelo.spawn(this.x, this.y);
 
         lucky.array.splice(indice, 1);
 

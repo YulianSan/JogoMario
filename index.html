@@ -17,25 +17,19 @@
 
 <script type="module">
     
-    import mario from "./mario/draw.mario.js";
-    import chao from "./chao/draw.chao.js";
+    import cvs from './canvas.js';
+    import mapa_teste from './mapas/mapa_teste.js';
 
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
+    cvs.iniciar( canvas, ctx );
     
+    mapa_teste.funcoesInicio();
 
     function loop() {
-        ctx.fillStyle = "#99d5e2";
         
-        ctx.fillRect(0,0,canvas.width,canvas.height);
-        
-        ctx.fillStyle= "#c99857";
-        ctx.fillRect( 0, 530, 900, 70);
-
-        let statusMario = mario.drawMario(ctx);
-
-        chao.drawTerra(ctx,statusMario);
+        mapa_teste.funcoesLoop();
 
         requestAnimationFrame(loop);
     }

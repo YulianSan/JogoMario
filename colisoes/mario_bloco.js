@@ -1,5 +1,6 @@
+import mario from '../mario/status.js';
 
-export default function colisao( classes, mario ){
+export default function colisao( classes ){
     
     for(let classe of classes ){
 
@@ -13,7 +14,7 @@ export default function colisao( classes, mario ){
 
                     
                 if( ( y < mario.y+36 && y + 10 > mario.y + 36 ) && 
-                    ( x + classe.size > mario.x && x  < mario.x + 25   ) &&
+                    ( x + classe.size > mario.x && x  < mario.x + 32   ) &&
                     ( mario.gravidade >= 0 ) ){
                     
                         mario.y = y - 34;
@@ -24,7 +25,7 @@ export default function colisao( classes, mario ){
 
                 }
                 else if( ( y + 5 < mario.y+36 && y + classe.size - 5 > mario.y) && 
-                        ( x + classe.size > mario.x && x < mario.x + classe.size) 
+                        ( x + classe.size > mario.x && x < mario.x + 35) 
                         ){
                         
                         //colisão direita do bloco
@@ -43,7 +44,7 @@ export default function colisao( classes, mario ){
                         ( mario.gravidade < 0 ) ){
                         
                         if(classe.nome === "lucky")
-                            bloco.destruir(classes[2]);
+                            bloco.destruir();
                         
                         mario.gravidade = 0.8;
                         return false;

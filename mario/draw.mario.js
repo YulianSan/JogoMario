@@ -21,6 +21,7 @@ Tecla(status);
 
 function drawMario(ctx) {
     
+    
     frames++;
 
     //pega a direção que o mario vai ficar olhando
@@ -65,8 +66,6 @@ function drawMario(ctx) {
 
     mover(status);
     
-    return status;
 }
-
 
 export default { drawMario };
