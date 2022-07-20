@@ -6,6 +6,7 @@ export default function AtualizarPosicao(status){
     if(
         status.direita && 
         !status.esquerda && 
+        status.vivo &&
         !moverCamera(status, status.camera, status.vel) ) {
     
         status.x += status.vel;
@@ -16,7 +17,8 @@ export default function AtualizarPosicao(status){
     else if(
         status.esquerda && 
         !status.direita &&
-        !moverCamera(status, status.camera, -status.vel) ) {
+        status.vivo &&
+        !moverCamera(status, status.camera, -status.vel)  ) {
     
         status.x -= status.vel;
         status.ultimaDirecao = "esquerda";

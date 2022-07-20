@@ -26,11 +26,12 @@ export default new classMapa(
             chao.produzirBlocos( statusChao.terraClass, 10, 550, 280 );
 
             chao.produzirBlocos( statusChao.luckyClass, 5, 300, 380 );
-            chao.produzirBlocos( statusChao.luckyClass, 3, 330, 290 );
+            chao.produzirBlocos( statusChao.luckyClass, 3, 330, 270 );
         
             chao.produzirBlocos( statusChao.terraClass, 30, 1100, 500 );
 
             statusChao.luckyClass.array[2].sorteado = true;
+            statusChao.luckyClass.array[6].sorteado = true;
         
         }
     ]

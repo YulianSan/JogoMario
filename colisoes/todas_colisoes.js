@@ -19,8 +19,9 @@ export default function() {
                 chao.terraClass,
                 chao.luckyAbatidoClass
             ]);
-        
-        mario_cogumelo();
+
+        if( cogumelo.surgiu )
+            mario_cogumelo();
     }
     
     if( cogumelo.surgiu &&  !cogumelo_abismo() )

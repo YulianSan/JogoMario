@@ -9,22 +9,24 @@ export default function colisao( classes ){
             let x = bloco.x + mario.camera.x;
             let y = bloco.y + mario.camera.y;
             
-            if( ( y < mario.y+36 && y + classe.size > mario.y) && 
+            if( ( y < mario.y && y + classe.size > mario.y - mario.h) && 
                 ( x + classe.size > mario.x && x  < mario.x + classe.size   )){
 
                     
-                if( ( y < mario.y+36 && y + 10 > mario.y + 36 ) && 
+                if( ( y < mario.y && y + 10 > mario.y ) && 
                     ( x + classe.size > mario.x && x  < mario.x + 32   ) &&
                     ( mario.gravidade >= 0 ) ){
                     
-                        mario.y = y - 34;
+                        mario.y = y + 1 ; 
+                        // somo mais 1 so para que ele passe um pouco para a colisão
+                        // sempre ser true
                         mario.suspenso = false;
                         mario.gravidade = 0;
 
                         return false;
 
                 }
-                else if( ( y + 5 < mario.y+36 && y + classe.size - 5 > mario.y) && 
+                else if( ( y + 5 < mario.y && y + classe.size - 5 > mario.y - mario.h) && 
                         ( x + classe.size > mario.x && x < mario.x + 35) 
                         ){
                         
@@ -39,7 +41,8 @@ export default function colisao( classes ){
                         return false;
 
                 }
-                else if( ( y + classe.size - 5 < mario.y && y + classe.size > mario.y) && 
+                else if( ( y + classe.size - 5 < mario.y - mario.h && 
+                          y + classe.size > mario.y - mario.h) && 
                         ( x + classe.size > mario.x && x < mario.x + 30) &&
                         ( mario.gravidade < 0 ) ){
                         
