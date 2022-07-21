@@ -14,7 +14,32 @@ export default class luckyAbatido{
 
         this.x = x;
         this.y = y;
+        this.etapaAnimacao = 0;
+        
+        //animação básica para que o bloco suba e desça rapidamento
+        this.animar =
+            () => { 
+                if( this.y > y - 5 && this.etapaAnimacao === 0) {
+                    this.y--;
+                    return;
+                }
+                else if( this.etapaAnimacao === 0 ) {
+                    this.etapaAnimacao++; 
+                    return;
+                }
 
+                if( this.y < y && this.etapaAnimacao === 1) {
+                    this.y++;
+                    return;
+                }
+                else if( this.etapaAnimacao === 1 ) {
+                    this.etapaAnimacao++; 
+                    return;
+                }
+
+                else { this.animar = null; this.etapaAnimacao = null}
+            }
+        
     }
 
 }

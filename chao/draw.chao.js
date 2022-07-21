@@ -58,6 +58,9 @@ function drawTodos( status, instanciado ) {
         instanciado.size
 
     );
+
+    if( status.animar )
+        status.animar();
     
 }
 export default { drawTerra, produzirBlocos };

@@ -3,6 +3,7 @@ import classMapa from './classe.js';
 import chao from '../chao/draw.chao.js'
 import mario from "../mario/draw.mario.js";
 import cogumelo from '../cogumelo/draw.congumelo.js';
+import placar from './placar.js'
 import colisoes from '../colisoes/todas_colisoes.js';
 
 import statusChao from '../chao/status.js';
@@ -17,6 +18,7 @@ export default new classMapa(
         () => { cogumelo.drawCogumelo(canvas.ctx) },
         () => { mario.drawMario(canvas.ctx) },
         () => { chao.drawTerra(canvas.ctx) },
+        placar,
         colisoes
     ],
 

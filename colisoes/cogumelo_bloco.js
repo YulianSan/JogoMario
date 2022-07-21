@@ -22,7 +22,7 @@ export default function colisao( classes ){
                     ( x + classe.size > coguX && x  < coguX + cogumelo.size ) &&
                     ( cogumelo.gravidade >= 0 ) ){
                     
-                    coguY = y - cogumelo.size ;
+                    cogumelo.y = y - cogumelo.size ;
                     cogumelo.suspenso = false;
                     cogumelo.gravidade = 0;
 

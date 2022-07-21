@@ -11,7 +11,7 @@ export default function colisao() {
     ){
 
         cogumelo.surgiu = false;
-        mario.bufado++;
+        if( mario.bufado < 3 ) mario.bufado++;
         console.log("Oi")
     }
 }
