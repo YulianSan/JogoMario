@@ -1,5 +1,6 @@
 import statusChao from "./status.js";
 import mario from "../mario/status.js";
+import canvas from "../canvas.js";
 
 var ctx;
 
@@ -17,24 +18,22 @@ function produzirBlocos( classe, qnt, x, y, rest = []) {
 function drawTerra(contexto) {
     ctx = contexto;
 
-    ctx.setTransform(1,0,0,1,0,0);
-
     statusChao.terraClass.array.forEach( v => {
 
-        drawTodos( v, statusChao.terraClass, mario );
+        drawTodos( v, statusChao.terraClass );
 
     });
     
 
     statusChao.luckyClass.array.forEach( v => {
 
-        drawTodos( v, statusChao.luckyClass, mario );
+        drawTodos( v, statusChao.luckyClass );
 
     });
 
     statusChao.luckyAbatidoClass.array.forEach( v => {
 
-        drawTodos( v, statusChao.luckyAbatidoClass, mario );
+        drawTodos( v, statusChao.luckyAbatidoClass );
 
     });
 
@@ -42,6 +41,14 @@ function drawTerra(contexto) {
 
 function drawTodos( status, instanciado ) {
     
+    if( status.x + mario.camera.x + instanciado.size < 0 ||
+        status.x + mario.camera.x > canvas.canvas.width 
+    ){ 
+        status.visivel = false; 
+        return;
+        
+    }else status.visivel = true;
+
     ctx.drawImage(
         
         statusChao.img,

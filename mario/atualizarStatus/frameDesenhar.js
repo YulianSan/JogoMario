@@ -21,4 +21,6 @@ export default function atualizarFrameAtivo(mario,frame,i,scaleX,ctx){
     mario.w = mario.frames[mario.bufado][frame][i].w;
     mario.h = mario.frames[mario.bufado][frame][i].h;
 
+    ctx.setTransform(1,0,0,1,0,0);
+
 }

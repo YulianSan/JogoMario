@@ -11,9 +11,11 @@ export default class luckyAbatido{
     static nome  = "luckyAbatido" ;
 
     constructor( x , y ){
-
+        
         this.x = x;
         this.y = y;
+        this.visivel = true;
+        
         this.etapaAnimacao = 0;
         
         //animação básica para que o bloco suba e desça rapidamento
@@ -32,12 +34,10 @@ export default class luckyAbatido{
                     this.y++;
                     return;
                 }
-                else if( this.etapaAnimacao === 1 ) {
-                    this.etapaAnimacao++; 
-                    return;
+                else { 
+                    this.animar = null; 
+                    this.etapaAnimacao = null
                 }
-
-                else { this.animar = null; this.etapaAnimacao = null}
             }
         
     }

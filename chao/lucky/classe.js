@@ -1,4 +1,5 @@
 import cogumelo from '../../cogumelo/status.js';
+import moeda from '../../moeda/status.js';
 import luckyAbatidoClass from '../luckyAbatido/classe.js';
 
 export default class lucky{
@@ -18,6 +19,7 @@ export default class lucky{
 
         this.x = x;
         this.y = y;
+        this.visivel = true;
 
     }
 
@@ -33,7 +35,9 @@ export default class lucky{
         
         if( this.sorteado ) 
             cogumelo.spawn(this.x, this.y);
-
+        else 
+            moeda.array.push( new moeda( this.x + lucky.size/2 , this.y ));
+        
         lucky.array.splice(indice, 1);
 
         return "Destruido";

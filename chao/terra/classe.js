@@ -14,6 +14,7 @@ export default class terra{
 
         this.x = x;
         this.y = y;
+        this.visivel = true;
 
     }
 

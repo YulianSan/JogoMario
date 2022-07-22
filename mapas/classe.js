@@ -1,6 +1,7 @@
 export default class Mapa{
     
-    constructor(funcLoop = [], funcInicio = []){
+    constructor( nome ,funcLoop = [], funcInicio = [] ){
+        this.nome = nome;
         this.loop = [...funcLoop];
         this.inicio = [...funcInicio];
     }

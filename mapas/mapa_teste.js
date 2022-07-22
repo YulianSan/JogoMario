@@ -1,15 +1,17 @@
 import classMapa from './classe.js';
 
-import chao from '../chao/draw.chao.js'
+import chao from '../chao/draw.chao.js';
+import moeda from '../moeda/draw.moeda.js';
 import mario from "../mario/draw.mario.js";
 import cogumelo from '../cogumelo/draw.congumelo.js';
-import placar from './placar.js'
+import placar from './placar/placar.js'
 import colisoes from '../colisoes/todas_colisoes.js';
 
 import statusChao from '../chao/status.js';
 import canvas from '../canvas.js';
 
 export default new classMapa(
+    "Mapa Teste",
     [
         () =>{
             canvas.ctx.fillStyle = "#99d5e2";
@@ -17,7 +19,9 @@ export default new classMapa(
         },
         () => { cogumelo.drawCogumelo(canvas.ctx) },
         () => { mario.drawMario(canvas.ctx) },
+        moeda,
         () => { chao.drawTerra(canvas.ctx) },
+        
         placar,
         colisoes
     ],
@@ -32,8 +36,7 @@ export default new classMapa(
         
             chao.produzirBlocos( statusChao.terraClass, 30, 1100, 500 );
 
-            statusChao.luckyClass.array[2].sorteado = true;
-            statusChao.luckyClass.array[6].sorteado = true;
+            statusChao.luckyClass.array[1].sorteado = true;
         
         }
     ]

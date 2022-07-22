@@ -7,6 +7,8 @@ export default function colisao( classes ){
 
         for( let bloco of classe.array){
             
+            if( !bloco.visivel ) { continue; }
+            
             let coguX = cogumelo.x + mario.camera.x;
             let coguY = cogumelo.y + mario.camera.y;
 

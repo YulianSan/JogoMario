@@ -1,8 +1,11 @@
 export default { 
     canvas: null, 
     ctx: null,
-    iniciar(canvas, ctx){
+    frames: 0,
+    iniciar(canvas, ctx, mapa){
         this.canvas = canvas;
         this.ctx = ctx;
-    }
+        this.mapa = mapa;
+    },
+    mapa: ""
 };

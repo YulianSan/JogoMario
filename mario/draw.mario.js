@@ -1,5 +1,7 @@
 //status
 import status from './status.js';
+//status canvas
+import canvas from '../canvas.js';
 
 //frames
 import MarioAndando from './movimentos/andar.js'   ;
@@ -15,14 +17,10 @@ import mover     from './atualizarStatus/posicao.js'       ;
 import drawFrame from './atualizarStatus/frameDesenhar.js' ;
 
 
-var frames=0;
-
 Tecla(status);
 
 function drawMario(ctx) {
     
-    
-    frames++;
 
     //pega a direção que o mario vai ficar olhando
     //  1 = esquerda
@@ -41,7 +39,7 @@ function drawMario(ctx) {
     else if ( status.suspenso )
         MarioPulando( 
             ctx, 
-            frames, 
+            canvas.frames, 
             status, 
             scaleX, 
             drawFrame 
@@ -50,7 +48,7 @@ function drawMario(ctx) {
     else if ( status.direita || status.esquerda )
         MarioAndando( 
             ctx, 
-            frames, 
+            canvas.frames, 
             status, 
             scaleX, 
             drawFrame 

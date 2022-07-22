@@ -29,12 +29,12 @@
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
-    cvs.iniciar( canvas, ctx );
+    cvs.iniciar( canvas, ctx, mapa_teste.nome );
     
     mapa_teste.funcoesInicio();
 
     function loop() {
-        
+        cvs.frames++;
         mapa_teste.funcoesLoop();
 
         requestAnimationFrame(loop);
