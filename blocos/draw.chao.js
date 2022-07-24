@@ -15,7 +15,7 @@ function produzirBlocos( classe, qnt, x, y, rest = []) {
 }
 
 
-function drawTerra(contexto) {
+function drawBlocos(contexto) {
     ctx = contexto;
 
     statusChao.terraClass.array.forEach( v => {
@@ -70,4 +70,4 @@ function drawTodos( status, instanciado ) {
         status.animar();
     
 }
-export default { drawTerra, produzirBlocos };
+export { drawBlocos, produzirBlocos };

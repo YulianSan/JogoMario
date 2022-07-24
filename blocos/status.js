@@ -3,7 +3,7 @@ import luckyAbatidoClass from './luckyAbatido/classe.js';
 import terraClass from './terra/classe.js';
 
 const bloco = new Image();
-bloco.src = `./chao/blocos.png`;
+bloco.src = `./blocos/blocos.png`;
 
 export default {
     img: bloco,

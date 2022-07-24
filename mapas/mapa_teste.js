@@ -1,13 +1,14 @@
 import classMapa from './classe.js';
 
-import chao from '../chao/draw.chao.js';
+import { drawBlocos, produzirBlocos } from '../blocos/draw.chao.js';
 import moeda from '../moeda/draw.moeda.js';
 import mario from "../mario/draw.mario.js";
 import cogumelo from '../cogumelo/draw.congumelo.js';
 import placar from './placar/placar.js'
 import colisoes from '../colisoes/todas_colisoes.js';
+import { drawCano, produzirCano } from '../cano/draw.cano.js'
 
-import statusChao from '../chao/status.js';
+import statusChao from '../blocos/status.js';
 import canvas from '../canvas.js';
 
 export default new classMapa(
@@ -20,24 +21,24 @@ export default new classMapa(
         () => { cogumelo.drawCogumelo(canvas.ctx) },
         () => { mario.drawMario(canvas.ctx) },
         moeda,
-        () => { chao.drawTerra(canvas.ctx) },
-        
+        drawCano,
+        () => { drawBlocos(canvas.ctx) },
         placar,
         colisoes
     ],
 
     [
         () => {
-            chao.produzirBlocos( statusChao.terraClass, 30, 0, 500 ); 
-            chao.produzirBlocos( statusChao.terraClass, 10, 550, 280 );
-
-            chao.produzirBlocos( statusChao.luckyClass, 5, 300, 380 );
-            chao.produzirBlocos( statusChao.luckyClass, 3, 330, 270 );
-        
-            chao.produzirBlocos( statusChao.terraClass, 30, 1100, 500 );
+            produzirBlocos( statusChao.terraClass, 50, 0, 500 ); 
+            produzirBlocos( statusChao.terraClass, 10, 550, 280 );
+            
+            produzirBlocos( statusChao.luckyClass, 5, 300, 380 );
+            produzirBlocos( statusChao.luckyClass, 3, 330, 260 );
 
             statusChao.luckyClass.array[1].sorteado = true;
+            statusChao.luckyClass.array[6].sorteado = true;
         
+            produzirCano(850, 420);
         }
     ]
 )
